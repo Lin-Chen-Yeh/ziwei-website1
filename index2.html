@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>紫微斗數 命盤、流年</title>
+    <style>
+        /* 全局樣式設置 */
+        body {
+            font-family: 'KaiTi', serif; /* 使用標楷體 */
+            background-image: url('zodiacsigns.jpg'); /* 背景圖片路徑 */
+            background-size: cover; /* 圖片自動縮放以覆蓋整個頁面 */
+            background-repeat: no-repeat; /* 防止圖片重複 */
+            background-position: center; /* 圖片置中對齊 */
+            margin: 0;
+            padding: 0;
+            color: #fff; /* 保持文字為白色，與背景形成對比 */
+            text-align: center; /* 全局置中對齊 */
+        }
+
+        /* 頁首樣式 */
+        header {
+            background-color: rgba(22, 33, 62, 0.8); /* 半透明背景，用於增強對比 */
+            padding: 20px;
+        }
+
+        header h1 {
+            font-size: 3em; /* 主標題字體大小 */
+            background: linear-gradient(90deg, #FFD700, #FF4500); /* 金色到橘色漸層 */
+            -webkit-background-clip: text; /* 僅填充文字 */
+            -webkit-text-fill-color: transparent; /* 透明背景 */
+            text-shadow: 2px 2px 10px rgba(255, 223, 0, 0.8); /* 光暈效果 */
+        }
+
+        header h2 {
+            color: #FFD700; /* 金色文字 */
+            font-size: 1.8em; /* 字體稍大 */
+            text-shadow: 1px 1px 4px rgba(255, 215, 0, 0.8); /* 柔和陰影 */
+        }
+
+        /* 特效標題樣式 */
+        h2.special-title {
+            font-family: 'Lobster', cursive; /* 使用特色字體 */
+            font-size: 4em; /* 字體大小 */
+            font-weight: bold; /* 加粗 */
+            background: linear-gradient(90deg, #FFD700, #FF4500, #6A0DAD); /* 漸層色 */
+            -webkit-background-clip: text; /* 僅填充文字 */
+            -webkit-text-fill-color: transparent; /* 透明背景 */
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.8), 0 0 20px rgba(255, 69, 0, 0.6), 0 0 30px rgba(106, 13, 173, 0.5); /* 光暈效果 */
+            margin-top: 20px;
+            animation: glow 2s infinite alternate, slide-in 1s ease-out; /* 動態效果 */
+        }
+
+        /* 發光動畫 */
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 10px rgba(255, 215, 0, 0.8), 0 0 20px rgba(255, 69, 0, 0.6), 0 0 30px rgba(106, 13, 173, 0.5);
+            }
+            100% {
+                text-shadow: 0 0 20px rgba(255, 215, 0, 1), 0 0 40px rgba(255, 69, 0, 1), 0 0 60px rgba(106, 13, 173, 1);
+            }
+        }
+
+        /* 滑入動畫 */
+        @keyframes slide-in {
+            0% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* 主要內容容器 */
+        .container {
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.6); /* 半透明背景，與背景圖片形成對比 */
+            border-radius: 10px; /* 圓角效果 */
+            max-width: 800px; /* 限制最大寬度 */
+            margin: 20px auto; /* 置中對齊 */
+            color: #fff; /* 保持文字白色 */
+        }
+
+        /* 列表樣式 */
+        .container ol {
+            font-size: 1.4em; /* 列表字體大小恢復正常 */
+            line-height: 2; /* 增加行距 */
+            color: #FF6347; /* 橘紅色 */
+            list-style: none; /* 移除列表符號 */
+            padding: 0;
+        }
+
+        .container ol li {
+            margin-bottom: 15px; /* 每個項目間距 */
+        }
+
+        .container ol li span {
+            font-size: 1.6em; /* 重點字體放大 */
+            font-weight: bold;
+            padding: 4px 8px;
+            border-radius: 5px;
+            text-shadow: 1px 1px 5px rgba(255, 215, 0, 0.8); /* 光暈效果 */
+        }
+
+        .highlight-gold {
+            color: #FFD700; /* 金色文字 */
+            background-color: rgba(255, 223, 0, 0.2); /* 金色背景 */
+        }
+
+        .highlight-orange {
+            color: #FF4500; /* 橘紅色文字 */
+            background-color: rgba(255, 69, 0, 0.2); /* 橘紅背景 */
+        }
+
+        /* 圖片樣式 */
+        .zodiac-image {
+            width: 50%; /* 圖片寬度調整為容器的一半 */
+            max-width: 400px; /* 限制最大寬度 */
+            margin: 20px auto; /* 置中 */
+            border-radius: 15px; /* 圓角效果 */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8); /* 添加柔和陰影 */
+            border: 5px solid; /* 漸層邊框 */
+            border-image-source: linear-gradient(90deg, #FFD700, #FF4500); /* 邊框漸層顏色 */
+            border-image-slice: 1; /* 保證漸層顯示完整 */
+            opacity: 0.9; /* 半透明效果 */
+            transition: transform 0.3s ease, opacity 0.3s ease; /* 動態效果 */
+        }
+
+        .zodiac-image:hover {
+            transform: scale(1.05); /* 懸停時放大 */
+            opacity: 1; /* 恢復完整不透明 */
+        }
+
+        /* 頁尾樣式 */
+        footer {
+            background-color: rgba(15, 52, 96, 0.8); /* 半透明背景 */
+            padding: 10px;
+            position: fixed; /* 固定在底部 */
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 1em;
+            color: #FFD700; /* 金色文字 */
+        }
+    </style>
+</head>
+<body>
+    <!-- 頁首 -->
+    <header>
+        <h1>紫微斗數</h1>
+        <h2>命盤、流年</h2>
+    </header>
+    <!-- 主內容容器 -->
+    <div class="container">
+        <!-- 特效標題 -->
+        <h2 class="special-title">郭氏紫微</h2>
+        <!-- 列表：11個重點 -->
+        <ol>
+            <li><span class="highlight-gold">好壞大運</span> 都是十年，你走到 <span class="highlight-orange">第幾年</span>？</li>
+            <li><span class="highlight-gold">出生</span> 決定你的性格，<span class="highlight-orange">性格</span> 決定你的命運。</li>
+            <li>好的更好，<span class="highlight-gold">衰的更衰</span>，<span class="highlight-orange">大運重疊流年的威力</span>。</li>
+            <li><span class="highlight-gold">今年理財</span> 是賠是賺？絕對離不開 <span class="highlight-orange">你的運勢</span>。</li>
+            <li><span class="highlight-gold">好壞日子</span> 都會到頭，你什麼時候 <span class="highlight-orange">能轉運？</span></li>
+            <li>從 <span class="highlight-gold">人格特質</span>，看出你 <span class="highlight-orange">適合的職業</span>。</li>
+            <li>紫微運勢 <span class="highlight-gold">有多準？再大的老闆</span> 也會倒霉。</li>
+            <li><span class="highlight-gold">你的強運</span> 在何時？找出你的 <span class="highlight-orange">自化祿</span>。</li>
+            <li>你的 <span class="highlight-gold">大運流年</span> 好不好，看 <span class="highlight-orange">祿權科忌</span> 在哪。</li>
+            <li><span class="highlight-gold">倒霉的緣</span> 一定會來，但原因 <span class="highlight-orange">你能控制</span>。</li>
+            <li>這十年 <span class="highlight-gold">會不會有錢？</span> 看你的 <span class="highlight-orange">大運財帛宮</span>。</li>
+        </ol>
+        <!-- 修飾圖片 -->
+        <div>
+            <img src="ZiweiDouShu.jpg" alt="Chinese Zodiac Wheel" class="zodiac-image">
+        </div>
+    </div>
+    <!-- 頁尾 -->
+    <footer>
+        <p>&copy; 2025 辰曄監置 All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
