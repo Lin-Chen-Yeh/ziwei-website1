@@ -284,11 +284,43 @@
         animation: float 3s ease-in-out infinite;
     }
     </style>
+<div id="interactive-image" style="
+width: 100%; 
+height: 100vh; 
+background-image: url('./ZiweiDouShu_Watermarked.png'); 
+background-size: contain; 
+background-position: center; 
+background-repeat: no-repeat;">
+</div>
 
+<style>
+@keyframes pulse {
+0% {
+    transform: scale(1);
+    filter: brightness(1);
+}
+50% {
+    transform: scale(1.2);
+    filter: brightness(1.5);
+}
+100% {
+    transform: scale(1);
+    filter: brightness(1);
+}
+}
+</style>
 
+<script>
+const image = document.getElementById('interactive-image');
 
+image.addEventListener('click', () => {
+image.style.animation = 'pulse 0.5s ease'; // 播放動畫
+setTimeout(() => {
+    image.style.animation = ''; // 重置動畫
+}, 500); // 確保動畫能再次觸發
+});
+</script>
 
-<img src="ZiweiDouShu_Watermarked.png" alt="Chinese Zodiac Wheel" class="zodiac-image">
     </div>
     <footer>
         <p>&copy; 2025 Mr.Lin All Rights Reserved.</p>
