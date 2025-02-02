@@ -1,329 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>星象奧秘 ✦ 紫微斗數命盤解析</title>
-    <style>
-        body {
-            font-family: 'KaiTi', serif;
-            background-image: url('S__2990174.jpg');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-            margin: 0;
-            padding: 0;
-            color: #fff;
-            text-align: center;
-        }
-
-        header {
-            background-color: rgba(22, 33, 62, 0.8);
-            padding: 20px;
-        }
-
-        header h1 {
-            font-size: 2.5rem;
-            background: linear-gradient(90deg, #FFD700, #FF4500);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 2px 2px 10px rgba(255, 223, 0, 0.8);
-        }
-
-        header h2 {
-            color: #FFD700;
-            font-size: 1.5rem;
-            text-shadow: 1px 1px 4px rgba(255, 215, 0, 0.8);
-        }
-
-        .container {
-            padding: 1.5rem;
-            background-color: rgba(0, 0, 0, 0.6);
-            border-radius: 10px;
-            max-width: 90%;
-            margin: 20px auto;
-            color: #fff;
-        }
-
-        .container ol {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: #FF6347;
-            list-style: none;
-            padding: 0;
-        }
-
-        .container ol li {
-            margin-bottom: 15px;
-        }
-
-        .container ol li span {
-            font-size: 1.4rem;
-            font-weight: bold;
-            text-shadow: 1px 1px 5px rgba(255, 215, 0, 0.8);
-        }
-
-        .zodiac-image {
-            width: 70%;
-            max-width: 300px;
-            margin: 20px auto;
-            border-radius: 15px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8);
-            border: 5px solid;
-            border-image-source: linear-gradient(90deg, #FFD700, #FF4500);
-            border-image-slice: 1;
-            opacity: 0.9;
-        }
-
-        footer {
-            background-color: rgba(15, 52, 96, 0.8);
-            padding: 10px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-
-        footer p {
-            margin: 0;
-            font-size: 0.9rem;
-            color: #FFD700;
-        }
-
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2rem;
-            }
-
-            header h2 {
-                font-size: 1.2rem;
-            }
-
-            .container ol {
-                font-size: 1rem;
-            }
-
-            .zodiac-image {
-                width: 80%;
-            }
-        }
-
-        @media (max-width: 480px) {
-            header h1 {
-                font-size: 1.8rem;
-            }
-
-            header h2 {
-                font-size: 1rem;
-            }
-
-            .container {
-                padding: 1rem;
-            }
-
-            .zodiac-image {
-                width: 90%;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>星象奧秘 ✦ 紫微斗數命盤解析</title>
+  <!-- 引入外部 CSS -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header style="text-align: center; font-family: 'DFKai-SB', 'KaiTi', serif;">
-        <div style="margin: 0; padding: 0;">
-            <!-- 主標題 -->
-            <h1 class="floating-title" style="
-                font-size: calc(2rem + 2vw); 
-                font-weight: bold; 
-                margin: 10px 0; 
-                color: #FFD700; 
-                text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);">
-                ✦星象奧秘✦
-            </h1>
-            <!-- 副標題 -->
-            <h2 class="floating-subtitle" style="
-                font-size: calc(1.5rem + 1.5vw); 
-                font-weight: bold; 
-                margin: 10px 0; 
-                color: #FFD700; 
-                text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);">
-                ✦紫微斗數命盤解析與流年預測✦
-            </h2>
+    <header>
+        <!-- 主題切換滑動開關 -->
+        <div class="theme-switch-container">
+          <label class="switch">
+            <input type="checkbox" id="theme-toggle">
+            <span class="slider"></span>
+          </label>
         </div>
-    </header>
-    
-    <style>
-        /* 主標題浮動動畫 */
-        @keyframes float-title {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-        
-        /* 副標題浮動動畫 */
-        @keyframes float-subtitle {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-        
-        /* 主標題浮動樣式 */
-        .floating-title {
-            display: block; /* 確保主標題占一整行 */
-            animation: float-title 3s ease-in-out infinite;
-        }
-        
-        /* 副標題浮動樣式 */
-        .floating-subtitle {
-            display: block; /* 確保副標題占一整行 */
-            animation: float-subtitle 4s ease-in-out infinite;
-        }
-    </style>
+        <div class="header-content">
+          <!-- 主標題 -->
+          <h1 class="floating-title">✦星象奧秘✦</h1>
+          <!-- 副標題 -->
+          <h2 class="floating-subtitle">✦紫微斗數命盤解析與流年預測✦</h2>
+        </div>
+      </header>
+  
+  <main>
     <div class="container">
-        <ol style="font-family: 'DFKai-SB', 'KaiTi', serif; color: #FFFFFF;">
-            <!-- 獨立的浮動標題 -->
-            <div style="text-align: center; margin-bottom: 10px;">
-                <span class="floating-title">
-                    ✦郭氏紫微✦
-                </span>
-            </div>
-            
-            <li>
-                <span style="color: #FFD700; font-weight: bold; font-size: 1.5em;">十年大運</span> 
-                <span style="color: #FFFFFF; font-weight: bold;">，榮枯並行那麼你眼下身在</span> 
-                <span style="color: #FFD700; font-weight: bold; font-size: 1.5em;">第幾年？</span>
-            </li>
-    
-            <li>
-                <span style="color: #FFFFFF; font-weight: bold;">出身影響性格，性格左右</span> 
-                <span style="color: #FFD700; font-weight: bold; font-size: 1.5em;">命運</span> 
-                <span style="color: #FFFFFF; font-weight: bold;">但努力能</span> 
-                <span style="color: #FFD700; font-weight: bold; font-size: 1.5em;">改寫未來</span>
-            </li>
-    
-            <li>
-                <span style="color: #FFFFFF; font-weight: bold;">大運與流年相疊</span> 
-                <span style="color: #FFD700; font-weight: bold; font-size: 1.5em;">好的更好，壞的更壞</span> 
-                <span style="color: #FFFFFF; font-weight: bold;">大運重疊流年的威力其威力難以忽視！</span> 
-            </li>
-    
-            <li>
-                <span style="color: #FFD700; font-weight: bold; font-size: 1.5em;">今年理財</span> 
-                <span style="color: #FFFFFF; font-weight: bold;">是賠是賺，絕對取決於你的運勢。</span> 
-            </li>
-    
-            <li>
-                <span style="color: #FFD700; font-weight: bold; font-size: 1.5em;">好壞日子</span> 
-                <span style="color: #FFFFFF; font-weight: bold;">都有盡頭，你何時能</span> 
-                <span style="color: #FFD700; font-weight: bold; font-size: 1.5em;">迎來轉運？</span>
-            </li>
-    
-            <li>
-                <span style="color: #FFFFFF; font-weight: bold;">從</span> 
-                <span style="color: #FFD700; font-weight: bold; font-size: 1.5em;">人格特質</span> 
-                <span style="color: #FFFFFF; font-weight: bold;">洞悉你最適合的職業！</span> 
-            </li>
-    
-            <li>
-                <span style="color: #FFD700; font-weight: bold; font-size: 1.5em;">紫微運勢</span> 
-                <span style="color: #FFFFFF; font-weight: bold;">有多準？再大的老闆也難逃低潮。</span> 
-            </li>
-    
-            <li>
-                <span style="color: #FFD700; font-weight: bold; font-size: 1.5em;">強運何時降臨？</span> 
-                <span style="color: #FFFFFF; font-weight: bold;">唯有探尋</span> 
-                <span style="color: #FFD700; font-weight: bold; font-size: 1.5em;">自化祿</span> 
-                <span style="color: #FFFFFF; font-weight: bold;">方可窺見天機。</span> 
-            </li>
-    
-            <li>
-                <span style="color: #FFD700; font-weight: bold; font-size: 1.5em;">大運流年吉凶</span> 
-                <span style="color: #FFFFFF; font-weight: bold;">且看</span>
-                <span style="color: #FFD700; font-weight: bold; font-size: 1.5em;">祿、權、科</span> 
-                <span style="color: #FFFFFF; font-weight: bold;">忌落於何處。</span> 
-            </li>
-    
-            <li>
-                <span style="color: #FFD700; font-weight: bold; font-size: 1.5em;">厄運降臨雖難免</span> 
-                <span style="color: #FFFFFF; font-weight: bold;">然其因由卻可</span> 
-                <span style="color: #FFD700; font-weight: bold; font-size: 1.5em;">掌控。</span>             
-            </li>
-    
-            <li>
-                <span style="color: #FFFFFF; font-weight: bold;">這十年成敗，看你的大運</span> 
-                <span style="color: #FFD700; font-weight: bold; font-size: 1.5em;">財帛宮。</span>  
-            </li>
-        </ol>
+      <ol class="content-list">
+        <div class="list-title">
+          <span class="floating-title">✦郭氏紫微✦</span>
+        </div>
+        
+        <li>
+          <span class="highlight">十年大運</span>
+          <span>，榮枯並行那麼你眼下身在</span>
+          <span class="highlight">第幾年？</span>
+        </li>
+  
+        <li>
+          <span>出身影響性格，性格左右</span>
+          <span class="highlight">命運</span>
+          <span>但努力能</span>
+          <span class="highlight">改寫未來</span>
+        </li>
+  
+        <li>
+          <span>大運與流年相疊</span>
+          <span class="highlight">好的更好，壞的更壞</span>
+          <span>大運重疊流年的威力其威力難以忽視！</span>
+        </li>
+  
+        <li>
+          <span class="highlight">今年理財</span>
+          <span>是賠是賺，絕對取決於你的運勢。</span>
+        </li>
+  
+        <li>
+          <span class="highlight">好壞日子</span>
+          <span>都有盡頭，你何時能</span>
+          <span class="highlight">迎來轉運？</span>
+        </li>
+  
+        <li>
+          <span>從</span>
+          <span class="highlight">人格特質</span>
+          <span>洞悉你最適合的職業！</span>
+        </li>
+  
+        <li>
+          <span class="highlight">紫微運勢</span>
+          <span>有多準？再大的老闆也難逃低潮。</span>
+        </li>
+  
+        <li>
+          <span class="highlight">強運何時降臨？</span>
+          <span>唯有探尋</span>
+          <span class="highlight">自化祿</span>
+          <span>方可窺見天機。</span>
+        </li>
+  
+        <li>
+          <span class="highlight">大運流年吉凶</span>
+          <span>且看</span>
+          <span class="highlight">祿、權、科</span>
+          <span>忌落於何處。</span>
+        </li>
+  
+        <li>
+          <span class="highlight">厄運降臨雖難免</span>
+          <span>然其因由卻可</span>
+          <span class="highlight">掌控。</span>             
+        </li>
+  
+        <li>
+          <span>這十年成敗，看你的大運</span>
+          <span class="highlight">財帛宮。</span>  
+        </li>
+      </ol>
     </div>
     
-    <style>
-    /* 浮動動畫 */
-    @keyframes float {
-        0%, 100% {
-            transform: translateY(0);
-        }
-        50% {
-            transform: translateY(-10px);
-        }
-    }
-    
-    /* 浮動標題的樣式 */
-    .floating-title {
-        display: inline-block;
-        font-weight: bold;
-        font-size: 2.5em;
-        background: linear-gradient(90deg, #FF7F50, #FF4500, #FFD700); 
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
-        letter-spacing: 2px;
-        animation: float 3s ease-in-out infinite;
-    }
-    </style>
-<div id="interactive-image" style="
-width: 100%; 
-height: 100vh; 
-background-image: url('./ZiweiDouShu_Watermarked.png'); 
-background-size: contain; 
-background-position: center; 
-background-repeat: no-repeat;">
-</div>
-
-<style>
-@keyframes pulse {
-0% {
-    transform: scale(1);
-    filter: brightness(1);
-}
-50% {
-    transform: scale(1.2);
-    filter: brightness(1.5);
-}
-100% {
-    transform: scale(1);
-    filter: brightness(1);
-}
-}
-</style>
-
-<script>
-const image = document.getElementById('interactive-image');
-
-image.addEventListener('click', () => {
-image.style.animation = 'pulse 0.5s ease'; // 播放動畫
-setTimeout(() => {
-    image.style.animation = ''; // 重置動畫
-}, 500); // 確保動畫能再次觸發
-});
-</script>
-
-    </div>
-    <footer>
-        <p>&copy; 2025 Mr.Lin All Rights Reserved.</p>
-    </footer>
+    <!-- 互動圖像區塊 -->
+    <section id="interactive-section">
+      <div id="interactive-image"></div>
+      <!-- <p class="instruction">點擊上方圖像，感受脈衝效果！</p> -->
+    </section>
+  </main>
+  
+  <footer>
+    <p>&copy; 2025 Mr.Lin All Rights Reserved.</p>
+  </footer>
+  
+  <!-- 引入外部 JavaScript -->
+  <script src="script.js"></script>
 </body>
 </html>
