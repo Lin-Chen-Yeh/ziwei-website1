@@ -1,0 +1,312 @@
+/* =============================
+   CSS 變數（方便主題切換與後續維護）
+   ============================= */
+   :root {
+    --primary-color: #FFD700;
+    --secondary-color: #FF4500;
+    --bg-color: #000;
+    --header-bg: rgba(22, 33, 62, 0.8);
+    --footer-bg: rgba(15, 52, 96, 0.8);
+    --container-bg: rgba(0, 0, 0, 0.6);
+    --text-color: #fff;
+    --highlight-font-size: 1.5em;
+  }
+  
+  /* =============================
+     全局樣式
+     ============================= */
+  body {
+    font-family: 'KaiTi', serif;
+    background-image: url('S__2990174.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+    color: var(--text-color);
+    text-align: center;
+  }
+  
+  /* =============================
+     Header 區域
+     ============================= */
+  header {
+    background-color: var(--header-bg);
+    padding: 20px;
+    font-family: 'DFKai-SB', 'KaiTi', serif;
+    text-align: center;
+    position: relative;
+  }
+  
+  /* 主題切換滑動開關容器 */
+  .theme-switch-container {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    z-index: 100; /* 確保置於最上層 */
+  }
+  
+  /* 滑動開關 */
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  
+  /* 隱藏預設的 checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* 開關背景 */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: background-color 0.4s;
+    border-radius: 34px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* 滑動按鈕 */
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: #fff;
+    transition: transform 0.4s;
+    border-radius: 50%;
+  }
+  
+  /* 當勾選時變色 */
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+  
+  /* 滑動按鈕移動效果 */
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+  
+  /* Header 文字內容 */
+  .header-content h1 {
+    font-size: calc(2rem + 2vw);
+    font-weight: bold;
+    margin: 10px 0;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .header-content h2 {
+    font-size: calc(1.5rem + 1.5vw);
+    font-weight: bold;
+    margin: 10px 0;
+    color: var(--primary-color);
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* =============================
+     內容區與列表樣式
+     ============================= */
+  .container {
+    padding: 1.5rem;
+    background-color: var(--container-bg);
+    border-radius: 10px;
+    max-width: 90%;
+    margin: 20px auto;
+  }
+  .content-list {
+    font-family: 'DFKai-SB', 'KaiTi', serif;
+    color: var(--text-color);
+    font-size: 1.2rem;
+    line-height: 1.8;
+    list-style: none;
+    padding: 0;
+  }
+  .content-list li {
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+  }
+  .content-list li:hover {
+    transform: translateX(10px);
+  }
+  .content-list li span {
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 5px rgba(255, 215, 0, 0.8);
+  }
+  .list-title {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .highlight {
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: var(--highlight-font-size);
+  }
+  
+  /* =============================
+     互動區塊樣式
+     ============================= */
+  #interactive-section {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: var(--container-bg);
+    border-radius: 10px;
+    max-width: 90%;
+  }
+  #interactive-image {
+    width: 100%;
+    height: 60vh;
+    background-image: url('./ZiweiDouShu_Watermarked.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+    cursor: pointer;
+  }
+  .instruction {
+    margin-top: 10px;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+  }
+  
+  /* =============================
+     Footer 區域
+     ============================= */
+  footer {
+    background-color: var(--footer-bg);
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  footer p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--primary-color);
+  }
+  
+  /* =============================
+     浮動動畫效果
+     ============================= */
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  .floating-title {
+    display: inline-block;
+    font-weight: bold;
+    font-size: 2.5em;
+    background: linear-gradient(90deg, #FF7F50, var(--secondary-color), var(--primary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    letter-spacing: 2px;
+    animation: float 3s ease-in-out infinite;
+  }
+  @keyframes float-subtitle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  .floating-subtitle {
+    display: block;
+    animation: float-subtitle 4s ease-in-out infinite;
+  }
+  
+  /* =============================
+     脈衝動畫（互動圖像）
+     ============================= */
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+      filter: brightness(1);
+    }
+    50% {
+      transform: scale(1.2);
+      filter: brightness(1.5);
+    }
+    100% {
+      transform: scale(1);
+      filter: brightness(1);
+    }
+  }
+  
+  /* =============================
+     Media Queries
+     ============================= */
+  @media (max-width: 768px) {
+    header h1 {
+      font-size: 2rem;
+    }
+    header h2 {
+      font-size: 1.2rem;
+    }
+    .content-list {
+      font-size: 1rem;
+    }
+    #interactive-image {
+      height: 50vh;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    header h1 {
+      font-size: 1.8rem;
+    }
+    header h2 {
+      font-size: 1rem;
+    }
+    .container {
+      padding: 1rem;
+    }
+    #interactive-image {
+      height: 40vh;
+    }
+  }
+  
+/* =============================
+   淺色主題覆蓋樣式（調整背景降低亮度）
+   ============================= */
+   body.light-theme {
+    /* 利用線性漸層覆蓋半透明黑色，讓背景圖片不那麼鮮豔 */
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('zodiacsigns.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: #000;
+  }
+  
+  body.light-theme header {
+    background-color: rgba(189, 163, 163, 0.7); /* 稍微調暗以增強對比 */
+  }
+  
+  body.light-theme .container {
+    /* 提高容器的不透明度，讓內容區更清晰 */
+    background-color: rgba(189, 163, 163, 0.7);
+    color: #000;
+  }
+  
+  body.light-theme footer {
+    background-color: rgba(189, 163, 163, 0.7);
+  }
+  
+  body.light-theme .highlight {
+    color: #FF4500;
+  }
+  
+  body.light-theme .instruction {
+    color: #FF4500;
+  }
+  
